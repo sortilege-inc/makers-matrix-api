@@ -11,4 +11,7 @@ export class Player {
 
   @Column({type: 'varchar', length: 75, nullable: true, default: null})
   name: string;
+
+  @Column({type: 'int', length: 10, nullable: true, default: null})
+  level_number: number;
 }

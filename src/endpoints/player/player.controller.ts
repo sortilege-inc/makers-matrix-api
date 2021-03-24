@@ -13,7 +13,29 @@ export class PlayerController {
      */
     @Get('all')
     async getAllPlayers(@Req() req: Request): Promise<Player[]> {
-        return await this.playerService.findAll();
+        try {
+            return await this.playerService.findAll();
+        } catch (e) {
+            throw new BadRequestException(e);
+        }
+    }
+
+    @Post('')
+    async savePlayer(@Req() req: Request, @Body() player: Player): Promise<any> {
+        try {
+            return this.playerService.save(player);
+        } catch (e) {
+            throw new BadRequestException(e);
+        }
+    }
+
+    @Put('')
+    async updatePlayer(@Req() req: Request, @Body() player: Player): Promise<any> {
+        try {
+            return this.playerService.update(player);
+        } catch (e) {
+            throw new BadRequestException(e);
+        }
     }
 
 }

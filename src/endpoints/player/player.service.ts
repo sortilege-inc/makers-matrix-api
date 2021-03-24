@@ -19,6 +19,13 @@ export class PlayerService {
         return await this.playerRepository.find();
     }
 
+    public async save(player: Player): Promise<Player> {
+        return await this.playerRepository.save(player);
+    }
+
+    public async update(player: Player): Promise<Player> {
+        return await this.playerRepository.save(player);
+    }
 
     private async timeout(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));

@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
+import { ConfigService } from './libs/config/config.service';
 import * as bodyParser from 'body-parser';
 
 async function bootstrap() {
@@ -10,7 +11,7 @@ async function bootstrap() {
   app.disable('x-powered-by');
   app.set('trust proxy', true);
 
-  const server_port = app.get('ConfigService').get('PORT') || 3001;
+  const server_port = app.get(ConfigService).get('PORT') || 3001;
 
   await app.listen(server_port);
 }
